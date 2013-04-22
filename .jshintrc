@@ -20,7 +20,8 @@
 		"xit",
 		"xdescribe",
 		"define",
-		"Router"
+		"Router",
+		"window"
 	],
 
 	"asi" : false,
