@@ -25,14 +25,6 @@ define(function(require) {
 
 		blog: function () {
 			require('./../apps/blog/app').run(this.viewManager);
-		},
-
-		account: function () {
-			require('./../apps/account/app').run(this.viewManager);
-		},
-
-		about: function () {
-			require('./../apps/about/app').run(this.viewManager);
 		}
 	});
 
