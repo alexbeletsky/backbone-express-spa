@@ -1,5 +1,9 @@
 require.config({
 	shim: {
+		'jQuery': {
+			exports: '$'
+		},
+
 		'Underscore': {
 			exports: '_'
 		},
@@ -15,9 +19,9 @@ require.config({
 	},
 
 	paths: {
-		Backbone: 'components/backbone/backbone',
-		jQuery: 'components/jquery/jquery',
-		Underscore: 'components/underscore/underscore'
+		Backbone: './../components/backbone/backbone',
+		jQuery: './../components/jquery/jquery',
+		Underscore: './../components/underscore/underscore'
 	}
 });
 

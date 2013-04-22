@@ -13,9 +13,9 @@ define(function (require) {
 		}
 
 		this.currentView = view;
-		this.currentView.render();
 
 		$("#app").html(this.currentView.el);
+		this.currentView.render();
 	}
 
 	return ViewManager;

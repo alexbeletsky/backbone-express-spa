@@ -8,31 +8,33 @@ define(function(require) {
 		},
 
 		routes: {
-			'': this.apps.home,
-			'home': this.apps.home,
-			'dashboard': this.apps.dashboard
+			'': 'home',
+			'dashboard': 'dashboard',
+			'blog': 'blog',
+			'account': 'account',
+			'about': 'about'
 		},
 
-		apps: {
-			home: function () {
-				require('./../pages/main').run(this.viewManager);
-			},
+		home: function () {
+			require('./../apps/home/app').run(this.viewManager);
+		},
 
-			dashboard: function () {
-				require('./../pages/dashboard').run(this.viewManager);
-			},
+		dashboard: function () {
+			require('./../apps/dashboard/app').run(this.viewManager);
+		},
 
-			blog: function () {
-				require('./../pages/blog').run(this.viewManager);
-			},
+		blog: function () {
+			require('./../apps/blog/app').run(this.viewManager);
+		},
 
-			account: function () {
-				require('./../pages/account').run(this.viewManager);
-			},
+		account: function () {
+			require('./../apps/account/app').run(this.viewManager);
+		},
 
-			about: function () {
-				require('./../pages/about').run(this.viewManager);
-			}
+		about: function () {
+			require('./../apps/about/app').run(this.viewManager);
 		}
 	});
+
+	return Router;
 });
