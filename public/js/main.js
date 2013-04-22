@@ -1,4 +1,10 @@
 require.config({
+	hbs: {
+		templateExtension: 'html',
+		disableI18n: true,
+		disableHelpers: true
+	},
+
 	shim: {
 		'jQuery': {
 			exports: '$'
@@ -13,15 +19,25 @@ require.config({
 			exports: 'Backbone'
 		},
 
+		'Handlebars': {
+			deps: ['handlebars'],
+			exports: 'Handlebars'
+		},
+
 		'ApplicationRouter': {
 			deps: ['jQuery', 'Underscore', 'Backbone']
 		}
 	},
 
 	paths: {
-		Backbone: './../components/backbone/backbone',
 		jQuery: './../components/jquery/jquery',
-		Underscore: './../components/underscore/underscore'
+		Underscore: './../components/underscore/underscore',
+		underscore: './../components/require-handlebars-plugin/hbs/underscore',
+		Backbone: './../components/backbone/backbone',
+		handlebars: './../components/require-handlebars-plugin/Handlebars',
+		hbs: './../components/require-handlebars-plugin/hbs',
+		i18nprecompile : './../components/require-handlebars-plugin/hbs/i18nprecompile',
+		json2 : './../components/require-handlebars-plugin/hbs/json2'
 	}
 });
 
