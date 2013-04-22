@@ -1,0 +1,10 @@
+{
+  "name": "backbone-express-spa",
+  "version": "0.0.1",
+  "dependencies": {
+    "underscore": "~1.4.4",
+    "jquery": "~2.0.0",
+    "backbone": "~1.0.0",
+    "bootstrap": "~2.3.1"
+  }
+}
