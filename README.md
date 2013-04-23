@@ -148,17 +148,61 @@ All applications are [apps](public/js/apps) folder.
 * Fetching intial application data
 * Instantiating Main View of application
 
+```js
+define(function(require) {
+	var MainView = require('./views/MainView');
+
+	return {
+		run: function (viewManager) {
+			var view = new MainView();
+			viewManager.show(view);
+		}
+	};
+});
+```
+
 ### Main view and subviews
 
 *Main view* responsible for UI of application. It's quite typically that main view is only instantiating subviews and passing the models/collections further down.
 
 [MainView.js](public/js/apps/home/views/MainView.js) keeps track of subviews in ``this.subviews`` arrays. Each subview will be closed by `ViewManager` [dispose](public/js/core/viewManager.js#L22) function.
 
+```js
+var MainView = Backbone.View.extend({
+	initialize: function () {
+		this.subviews = [];
+	},
+
+	render: function () {
+		var headerView = new HeaderView();
+		this.subviews.push(headerView);
+		this.$el.append(headerView.render().el);
+
+		var footerView = new FooterView();
+		this.subviews.push(footerView);
+		this.$el.append(footerView.render().el);
+
+		return this;
+	}
+});
+```
+
 ### Templates
 
 [Handlebars](http://handlebarsjs.com/) is picked up as templating engine, powered by [require-handlebars-plugin](https://github.com/SlexAxton/require-handlebars-plugin). Templates are stored on application level in `template` folder. Handlebars plugin is configured to keep templates in `.html` files.
 
 View is loading template throught `!hbs` plugin and uses that in `render()` function.
+
+```js
+var HeaderView = Backbone.View.extend({
+	template: require('hbs!./../templates/HeaderView'),
+
+	render: function () {
+		this.$el.html(this.template({title: 'Backbone SPA boilerplate'}));
+		return this;
+	}
+});
+```
 
 # Legal Info (MIT License)
 
