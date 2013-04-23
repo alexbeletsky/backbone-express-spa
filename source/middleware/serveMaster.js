@@ -1,6 +1,12 @@
+var _ = require('underscore');
+
 module.exports = function () {
 	return function (req, res, next) {
-		if(req.url.substr(0, '/api'.length) === '/api'){
+		var skipMaster = _.any(['/api', '/components', '/css', '/js'], function (url) {
+			return req.url.substr(0, url.length) === url;
+		});
+
+		if (skipMaster) {
 			return next();
 		}
 
