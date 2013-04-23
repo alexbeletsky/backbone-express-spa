@@ -113,6 +113,17 @@ define([
 
 With some time spend on Node.js programming, CommonJS style becomes more convenient to use. Fortunatelly ``RequireJS`` has [http://requirejs.org/docs/commonjs.html](CommonJS) style implementation.
 
+```js
+define(function (require) {
+	// dependencies
+	var SomeDep = require('/some/dep');
+	var AnotherDep = require('another/dep');
+
+	// export
+	return {};
+});
+```
+
 ### Routing
 
 [TDB]
