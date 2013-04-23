@@ -32,7 +32,7 @@ $ node app.js
 
 This project is complete and minimal setup for building single page applications running on ``Express.js`` framework as back-end and ``Backbone.js`` as front-end.
 
-SPA itself is quite simple concept, but it requires some infrascture to have in place, before build up new application. This project already includes this infrastructure.
+SPA itself is rather simple concept, but it requires some infrascture to have in place, before build up new application. This project already includes this infrastructure.
 
 ## Express.js
 
@@ -45,7 +45,7 @@ In API-oriented architecture back-end is responsible for 2 main purposes:
 
 ### Master page
 
-[Master page](views/master.ejs) is main (and typically one) html page retuned from server. It includes all styles and javascript, provides very basic layout and placeholder for application.
+[Master page](views/master.ejs) is main (and typically one) html page returned from server. It includes all styles and javascript, provides very basic layout and placeholder for application.
 
 ```html
 <div class="container">
@@ -77,7 +77,7 @@ module.exports = function (app) {
 		res.json({status: 'PUT /api/users/' + req.params.id});
 	});
 
-	app.delete('/api/users/:id', function (req, res) {
+	app.del('/api/users/:id', function (req, res) {
 		res.json({status: 'DELETE /api/users/' + req.params.id});
 	});
 };

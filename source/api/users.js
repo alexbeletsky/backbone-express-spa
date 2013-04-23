@@ -11,7 +11,7 @@ module.exports = function (app) {
 		res.json({status: 'PUT /api/users/' + req.params.id});
 	});
 
-	app.delete('/api/users/:id', function (req, res) {
+	app.del('/api/users/:id', function (req, res) {
 		res.json({status: 'DELETE /api/users/' + req.params.id});
 	});
 };
