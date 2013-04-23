@@ -57,7 +57,7 @@ After master page is served back to client the rest of UI and logic is build by 
 
 ### Serving master page
 
-To serve master pages application includes middleware component ``source/middleware/serveMaster.js``. It would respond with master page html for any request, expect the requests for `/api`, `/components`, `/css/` or `/js`.
+To serve master pages application includes middleware component [serveMaster.js](source/middleware/serveMaster.js). It would respond with master page html for any request, expect the requests for `/api`, `/components`, `/css/` or `/js`.
 
 ### API end-points
 
@@ -127,11 +127,15 @@ define(function (require) {
 
 ### Routing
 
-[TDB]
+All routing logic is placed in [/core/router.js](public/js/core/router.js). There are 3 routes defined in boilerplace.
+
+Each route handler is responsible for *starting up* new application. Application `run` function takes ``ViewManager`` instance.
 
 ### View manager
 
-[TDB]
+SPA application typical threat is *memory leaks*. Memory leaks might appear for a few reasons, one of the most famous reason for Backbone applications are, so called, [zombie views](http://lostechies.com/derickbailey/2011/09/15/zombies-run-managing-page-transitions-in-backbone-apps/).
+
+[/core/viewManager.js](public/js/core/viewManager.js) is responsible for disposing views during switch from one router to another.
 
 ### Applications
 
@@ -142,10 +146,6 @@ define(function (require) {
 [TDB]
 
 ### Templates
-
-[TDB]
-
-## Building for production
 
 [TDB]
 

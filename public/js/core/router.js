@@ -10,9 +10,7 @@ define(function(require) {
 		routes: {
 			'': 'home',
 			'dashboard': 'dashboard',
-			'blog': 'blog',
-			'account': 'account',
-			'about': 'about'
+			'blog': 'blog'
 		},
 
 		home: function () {
