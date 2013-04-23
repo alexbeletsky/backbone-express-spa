@@ -36,7 +36,7 @@ SPA itself is quite simple concept, but it requires some infrascture to have in 
 
 ## Express.js
 
-[http://expressjs.com/](Express.js) is used as back-end development framework. It's simple and easy to configure for SPA.
+[Express.js](http://expressjs.com/) is used as back-end development framework. It's simple and easy to configure for SPA.
 
 In API-oriented architecture back-end is responsible for 2 main purposes:
 
