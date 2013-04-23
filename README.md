@@ -139,11 +139,20 @@ SPA application typical threat is *memory leaks*. Memory leaks might appear for 
 
 ### Applications
 
-[TDB]
+Application is concept of grouping `models`, `collections`, `views` of unit in one place. The rule is, "one route - one application". Router matches the route, loading the application entry point and passes `viewManager` (or any other parameters, like id's or query strings) into application.
+
+All applications are [apps](public/js/apps) folder.
+
+[app.js](public/js/apps/home/app.js) is entry point of application and it's responsible for several things:
+
+* Fetching intial application data
+* Instantiating Main View of application
 
 ### Main view and subviews
 
-[TDB]
+*Main view* responsible for UI of application. It's quite typically that main view is only instantiating subviews and passing the models/collections further down.
+
+[MainView.js](public/js/apps/home/views/MainView.js) keeps track of subviews in ``this.subviews`` arrays. Each subview will be closed by `ViewManager` [dispose](public/js/core/viewManager.js#L22) function.
 
 ### Templates
 
