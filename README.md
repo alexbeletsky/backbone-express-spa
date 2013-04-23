@@ -36,7 +36,7 @@ SPA itself is quite simple concept, but it requires some infrascture to have in 
 
 ## Express.js
 
-``Express.js`` is used as back-end development framework. It's simple and easy to configure for SPA.
+[http://expressjs.com/](Express.js) is used as back-end development framework. It's simple and easy to configure for SPA.
 
 In API-oriented architecture back-end is responsible for 2 main purposes:
 
@@ -92,11 +92,26 @@ require('./source/api/users')(app);
 
 ## Backbone.js
 
-``Backbone.js`` is the one of most popular front-end development framework (library). It provides abstractions for models, views, collections and able to handle client-side routing.
+[http://backbonejs.org/](Backbone.js) is the one of most popular front-end development framework (library). It provides abstractions for models, views, collections and able to handle client-side routing.
+
+Front-end architecture is build on modular structure and relying on [https://github.com/amdjs/amdjs-api/wiki/AMD](AMD) to allow build scallable applications.
 
 ### RequireJS and CommonJS
 
-[TDB]
+[http://requirejs.org/](RequireJS) picked up as asynchronous javascript module loading. ``RequireJS`` uses it's own style for defining modules, specifying the dependency as array of strings.
+
+```js
+define([
+	'/some/dep',
+	'another/dep',
+	'yet/another/dep',
+	'text!./templates/template.html,
+	jQuery,
+	Backbone'], function(SomeDep, AnotherDep, YetAnotherDep, template, $, Backbobe) {
+		// module implementation...
+	});
+
+With some time spend on Node.js programming, CommonJS style becomes more convenient to use. Fortunatelly ``RequireJS`` has [http://requirejs.org/docs/commonjs.html](CommonJS) style implementation.
 
 ### Routing
 
