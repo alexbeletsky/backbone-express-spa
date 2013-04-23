@@ -57,14 +57,42 @@ After master page is served back to client the rest of UI and logic is build by 
 
 ### Serving master page
 
+To serve master pages application includes middleware component ``source/middleware/serveMaster.js``. It would respond with master page html for any request, expect the requests for `/api`, `/components`, `/css/` or `/js`.
 
 ### API end-points
 
-[TDB]
+API is HTTP, JSON based end-points. Sources are located at ``sourse/api``. Each API module retunrs a function that takes ``app`` instance and setup HTTP verb handler for a route.
+
+```js
+module.exports = function (app) {
+	app.get('/api/users', function (req, res) {
+		res.json({status: 'GET /api/users'});
+	});
+
+	app.post('/api/users', function (req, res) {
+		res.json({status: 'POST /api/users'});
+	});
+
+	app.put('/api/users/:id', function (req, res) {
+		res.json({status: 'PUT /api/users/' + req.params.id});
+	});
+
+	app.delete('/api/users/:id', function (req, res) {
+		res.json({status: 'DELETE /api/users/' + req.params.id});
+	});
+};
+```
+
+To enable API end-point, you should modify ``app.js`` file, like
+
+```js
+// api endpoinds
+require('./source/api/users')(app);
+```
 
 ## Backbone.js
 
-[TDB]
+``Backbone.js`` is the one of most popular front-end development framework (library). It provides abstractions for models, views, collections and able to handle client-side routing.
 
 ### RequireJS and CommonJS
 
