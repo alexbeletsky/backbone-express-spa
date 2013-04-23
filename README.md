@@ -48,9 +48,9 @@ In API-oriented architecture back-end is responsible for 2 main purposes:
 *Master page* is main (and typically one) html page retuned from server. It includes all styles and javascript, provides very basic layout and placeholder for application.
 
 ```html
-	<div class="container">
-		<div id="app" class="container"></div>
-	</div>
+<div class="container">
+	<div id="app" class="container"></div>
+</div>
 ```
 
 After master page is served back to client the rest of UI and logic is build by ``Backbone.js``.
@@ -92,13 +92,13 @@ require('./source/api/users')(app);
 
 ## Backbone.js
 
-[http://backbonejs.org/](Backbone.js) is the one of most popular front-end development framework (library). It provides abstractions for models, views, collections and able to handle client-side routing.
+[Backbone.js](http://backbonejs.org/) is the one of most popular front-end development framework (library). It provides abstractions for models, views, collections and able to handle client-side routing.
 
-Front-end architecture is build on modular structure and relying on [https://github.com/amdjs/amdjs-api/wiki/AMD](AMD) to allow build scallable applications.
+Front-end architecture is build on modular structure and relying on [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) to allow build scallable applications.
 
 ### RequireJS and CommonJS
 
-[http://requirejs.org/](RequireJS) picked up as asynchronous javascript module loading. ``RequireJS`` uses it's own style for defining modules, specifying the dependency as array of strings.
+[RequireJS](http://requirejs.org/) picked up as asynchronous javascript module loading. ``RequireJS`` uses it's own style for defining modules, specifying the dependency as array of strings.
 
 ```js
 define([
@@ -110,8 +110,9 @@ define([
 	Backbone'], function(SomeDep, AnotherDep, YetAnotherDep, template, $, Backbobe) {
 		// module implementation...
 	});
+```
 
-With some time spend on Node.js programming, CommonJS style becomes more convenient to use. Fortunatelly ``RequireJS`` has [http://requirejs.org/docs/commonjs.html](CommonJS) style implementation.
+With some time spent on Node.js programming, CommonJS style becomes more convenient to use. Fortunatelly ``RequireJS`` has [CommonJS](http://requirejs.org/docs/commonjs.html) style implementation.
 
 ```js
 define(function (require) {
