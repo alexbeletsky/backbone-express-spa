@@ -32,17 +32,31 @@ $ node app.js
 
 This project is complete and minimal setup for building single page applications running on ``Express.js`` framework as back-end and ``Backbone.js`` as front-end.
 
+SPA itself is quite simple concept, but it requires some infrascture to have in place, before build up new application. This project already includes this infrastructure.
+
 ## Express.js
 
-[TDB]
+``Express.js`` is used as back-end development framework. It's simple and easy to configure for SPA.
+
+In API-oriented architecture back-end is responsible for 2 main purposes:
+
+* Serving master page html
+* Providing API end-points for web client
 
 ### Master page
 
-[TDB]
+*Master page* is main (and typically one) html page retuned from server. It includes all styles and javascript, provides very basic layout and placeholder for application.
+
+```html
+	<div class="container">
+		<div id="app" class="container"></div>
+	</div>
+```
+
+After master page is served back to client the rest of UI and logic is build by ``Backbone.js``.
 
 ### Serving master page
 
-[TDB]
 
 ### API end-points
 
