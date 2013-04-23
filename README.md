@@ -45,7 +45,7 @@ In API-oriented architecture back-end is responsible for 2 main purposes:
 
 ### Master page
 
-*Master page* is main (and typically one) html page retuned from server. It includes all styles and javascript, provides very basic layout and placeholder for application.
+[Master page](views/master.ejs) is main (and typically one) html page retuned from server. It includes all styles and javascript, provides very basic layout and placeholder for application.
 
 ```html
 <div class="container">
@@ -156,7 +156,9 @@ All applications are [apps](public/js/apps) folder.
 
 ### Templates
 
-[TDB]
+[Handlebars](http://handlebarsjs.com/) is picked up as templating engine, powered by [require-handlebars-plugin](https://github.com/SlexAxton/require-handlebars-plugin). Templates are stored on application level in `template` folder. Handlebars plugin is configured to keep templates in `.html` files.
+
+View is loading template throught `!hbs` plugin and uses that in `render()` function.
 
 # Legal Info (MIT License)
 
