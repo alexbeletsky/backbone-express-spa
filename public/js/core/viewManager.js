@@ -9,6 +9,7 @@ define(function (require) {
 	};
 
 	function showView(view) {
+		debugger;
 		if (this.currentView) {
 			disposeView(this.currentView);
 		}

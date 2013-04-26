@@ -5,7 +5,7 @@ define(function (require) {
 		template: require('hbs!./../templates/HeaderView'),
 
 		render: function () {
-			this.$el.html(this.template({title: 'Backbone SPA boilerplate'}));
+			this.$el.html(this.template({title: 'TheMailer'}));
 			return this;
 		}
 	});

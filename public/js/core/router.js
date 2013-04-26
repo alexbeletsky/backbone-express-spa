@@ -9,20 +9,30 @@ define(function(require) {
 
 		routes: {
 			'': 'home',
-			'dashboard': 'dashboard',
-			'blog': 'blog'
+			'inbox': 'inbox',
+			'inbox/compose': 'inboxCompose',
+			'contacts': 'contacts',
+			'tasks': 'tasks'
 		},
 
 		home: function () {
 			require('./../apps/home/app').run(this.viewManager);
 		},
 
-		dashboard: function () {
-			require('./../apps/dashboard/app').run(this.viewManager);
+		inbox: function () {
+			require('./../apps/inbox/app').run(this.viewManager);
 		},
 
-		blog: function () {
-			require('./../apps/blog/app').run(this.viewManager);
+		inboxCompose: function () {
+			require('./../apps/inbox/subapps/compose/app').run(this.viewManager);
+		},
+
+		contacts: function () {
+			require('./../apps/contacts/app').run(this.viewManager);
+		},
+
+		tasks: function () {
+			require('./../apps/tasks/app').run(this.viewManager);
 		}
 	});
 
