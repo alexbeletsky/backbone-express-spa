@@ -24,6 +24,7 @@ app.configure('development', function(){
 // api endpoinds
 require('./source/api/emails')(app);
 require('./source/api/contacts')(app);
+require('./source/api/tasks')(app);
 
 http.createServer(app).listen(app.get('port'), function(){
 	console.log("Express server listening on port " + app.get('port'));
