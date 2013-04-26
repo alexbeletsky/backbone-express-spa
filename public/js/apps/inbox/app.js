@@ -1,13 +1,13 @@
 define(function (require) {
-	var InboxCollection = require('./collections/InboxCollection');
+	var EmailsCollection = require('./collections/EmailsCollection');
 	var MainView = require('./views/MainView');
 
 	return {
 		run: function(viewManager) {
-			var inboxCollection = new InboxCollection();
-			inboxCollection.fetch({
-				success: function (inboxCollection) {
-					var view = new MainView({collection: inboxCollection});
+			var emailsCollection = new EmailsCollection();
+			emailsCollection.fetch({
+				success: function (emailsCollection) {
+					var view = new MainView({collection: emailsCollection});
 					viewManager.show(view);
 				}
 			});

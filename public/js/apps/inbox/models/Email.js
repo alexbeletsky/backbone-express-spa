@@ -2,7 +2,7 @@ define(function(require) {
 	var Backbone = require('Backbone');
 
 	var Email = Backbone.Model.extend({
-		urlRoot: '/api/inbox'
+		urlRoot: '/api/emails'
 	});
 
 	return Email;
