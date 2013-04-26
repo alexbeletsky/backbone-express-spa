@@ -2,6 +2,12 @@
 
 To build single pages application is seconds, not hours.
 
+SPA infrastruction setup could be time consuming. It's typicall problem, to configure `requirejs`, intial routing and view manager, to prevent memory leask. This project could be used as good start to build own single page application.
+
+## Application
+
+'TheMailer' - simple app for managing emails, contacts, tasks.
+
 ## Installation
 
 Clone github repository,
@@ -65,19 +71,19 @@ API is HTTP, JSON based end-points. Sources are located at ``sourse/api``. Each 
 
 ```js
 module.exports = function (app) {
-	app.get('/api/users', function (req, res) {
+	app.get('/api/emails', function (req, res) {
 		res.json({status: 'GET /api/users'});
 	});
 
-	app.post('/api/users', function (req, res) {
+	app.post('/api/emails', function (req, res) {
 		res.json({status: 'POST /api/users'});
 	});
 
-	app.put('/api/users/:id', function (req, res) {
+	app.put('/api/emails/:id', function (req, res) {
 		res.json({status: 'PUT /api/users/' + req.params.id});
 	});
 
-	app.del('/api/users/:id', function (req, res) {
+	app.del('/api/emails/:id', function (req, res) {
 		res.json({status: 'DELETE /api/users/' + req.params.id});
 	});
 };
@@ -87,7 +93,9 @@ To enable API end-point, you should modify ``app.js`` file, like
 
 ```js
 // api endpoinds
-require('./source/api/users')(app);
+require('./source/api/emails')(app);
+require('./source/api/contacts')(app);
+require('./source/api/tasks')(app);
 ```
 
 ## Backbone.js
