@@ -67,7 +67,7 @@ To serve master pages application includes middleware component [serveMaster.js]
 
 ### API end-points
 
-API is HTTP, JSON based end-points. Sources are located at ``sourse/api``. Each API module retunrs a function that takes ``app`` instance and setup HTTP verb handler for a route.
+API is HTTP, JSON based end-points. Sources are located at ``source/api``. Each API module retunrs a function that takes ``app`` instance and setup HTTP verb handler for a route.
 
 ```js
 module.exports = function (app) {
