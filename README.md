@@ -2,8 +2,6 @@
 
 To build single pages application is seconds, not hours.
 
-SPA infrastructure setup could be time consuming. It's typical problem, to configure `requirejs`, initial routing and view manager, to prevent memory leaks. This project could be used as good start to build own single page application.
-
 ## Contents
 
 * [Description](#description)
@@ -29,6 +27,8 @@ SPA infrastructure setup could be time consuming. It's typical problem, to confi
 
 <a name="description"/>
 ## Description
+
+SPA infrastructure setup could be time consuming. It's typical problem, to configure `requirejs`, initial routing and view manager, to prevent memory leaks. This project could be used as good start to build own single page application.
 
 This project is complete and minimal setup for building single page applications running on ``Express.js`` framework as back-end and ``Backbone.js`` as front-end.
 
