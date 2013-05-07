@@ -6,33 +6,40 @@ SPA infrastructure setup could be time consuming. It's typical problem, to confi
 
 ## Contents
 
-* [Description]()
-* [Application example]()
-* [Installation]()
-* [Express.js]()
-** [Serving master page]()
-** [API end-points]()
-* [Backbone.js]()
-** [RequireJS and CommonJS]()
-** [Routing]()
-** [View Manager]()
-** [Applications]()
-** [Main view and subviews]()
-* [Transitions]()
-* [Testing]()
-** [Backbone.js (front-end) tests]()
-** [Express.js (back-end) tests]()
-** [Functional (web driver) tests]()
-* [SEO]()
-* [Build for production]()
-* [Deployment]()
+* [Description](#description)
+* [Application example](#example)
+* [Installation](#installation)
+* [Express.js](#expressjs)
+	* [Serving master page](#serving-master-page)
+	* [API end-points](#api-endpoints)
+* [Backbone.js](#backbonejs)
+	* [RequireJS and CommonJS](#requirejs-and-commonjs)
+	* [Routing](#routing)
+	* [View Manager](#view-manager)
+	* [Applications](#applications)
+	* [Main view and subviews](#main-view-and-subviews)
+* [Transitions](#transitions)
+* [Testing](#testing)
+	* [Backbone.js (front-end) tests](#front-end-tests)
+	* [Express.js (back-end) tests](#back-end-tests)
+	* [Functional (web driver) tests](#functional-tests)
+* [SEO](#seo)
+* [Build for production](#build-for-production)
+* [Deployment](#deployment)
 
+<a name="description"/>
 ## Description
 
 This project is complete and minimal setup for building single page applications running on ``Express.js`` framework as back-end and ``Backbone.js`` as front-end.
 
 SPA itself is rather simple concept, but it requires some infrastructure to have in place, before build up new application. This project already includes this infrastructure.
 
+<a name="example"/>
+## Application example
+
+'TheMailer' - simple app for managing emails, contacts, tasks.
+
+<a name="installation"/>
 ## Installation
 
 Clone github repository,
@@ -59,11 +66,7 @@ Run app (development mode),
 $ node app.js
 ```
 
-## Application example
-
-'TheMailer' - simple app for managing emails, contacts, tasks.
-
-
+<a name="expressjs"/>
 ## Express.js
 
 [Express.js](http://expressjs.com/) is used as back-end development framework. It's simple and easy to configure for SPA.
@@ -85,10 +88,12 @@ In API-oriented architecture back-end is responsible for 2 main purposes:
 
 After master page is served back to client the rest of UI and logic is build by ``Backbone.js``.
 
+<a name="serving-master-page"/>
 ### Serving master page
 
 To serve master pages application includes middleware component [serveMaster.js](source/middleware/serveMaster.js). It would respond with master page html for any request, expect the requests for `/api`, `/components`, `/css/` or `/js`.
 
+<a name="api-endpoints"/>
 ### API end-points
 
 API is HTTP, JSON based end-points. Sources are located at ``source/api``. Each API module returns a function that takes ``app`` instance and setup HTTP verb handler for a route.
@@ -122,12 +127,14 @@ require('./source/api/contacts')(app);
 require('./source/api/tasks')(app);
 ```
 
+<a name="backbonejs"/>
 ## Backbone.js
 
 [Backbone.js](http://backbonejs.org/) is the one of most popular front-end development framework (library). It provides abstractions for models, views, collections and able to handle client-side routing.
 
 Front-end architecture is build on modular structure and relying on [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) to allow build scalable applications.
 
+<a name="requirejs-and-commonjs"/>
 ### RequireJS and CommonJS
 
 [RequireJS](http://requirejs.org/) picked up as asynchronous javascript module loading. ``RequireJS`` uses it's own style for defining modules, specifying the dependency as array of strings.
@@ -157,18 +164,21 @@ define(function (require) {
 });
 ```
 
+<a name="routing"/>
 ### Routing
 
 All routing logic is placed in [/core/router.js](public/js/core/router.js). There are 3 routes defined in boilerplate.
 
 Each route handler is responsible for *starting up* new application. Application `run` function takes ``ViewManager`` instance.
 
+<a name="view-manager"/>
 ### View manager
 
 SPA application typical threat is *memory leaks*. Memory leaks might appear for a few reasons, one of the most famous reason for Backbone applications are, so called, [zombie views](http://lostechies.com/derickbailey/2011/09/15/zombies-run-managing-page-transitions-in-backbone-apps/).
 
 [/core/viewManager.js](public/js/core/viewManager.js) is responsible for disposing views during switch from one router to another.
 
+<a name="applications"/>
 ### Applications
 
 Application is concept of grouping `models`, `collections`, `views` of unit in one place. The rule is, "one route - one application". Router matches the route, loading the application entry point and passes `viewManager` (or any other parameters, like id's or query strings) into application.
@@ -193,6 +203,7 @@ define(function(require) {
 });
 ```
 
+<a name="mainview-and-subviews"/>
 ### Main view and subviews
 
 *Main view* responsible for UI of application. It's quite typically that main view is only instantiating subviews and passing the models/collections further down.
@@ -219,6 +230,7 @@ var MainView = Backbone.View.extend({
 });
 ```
 
+<a name="templates"/>
 ### Templates
 
 [Handlebars](http://handlebarsjs.com/) is picked up as templating engine, powered by [require-handlebars-plugin](https://github.com/SlexAxton/require-handlebars-plugin). Templates are stored on application level in `template` folder. Handlebars plugin is configured to keep templates in `.html` files.
@@ -236,34 +248,42 @@ var HeaderView = Backbone.View.extend({
 });
 ```
 
+<a name="transitions"/>
 ## Transitions
 
 TODO.
 
+<a name="testing"/>
 ## Testing
 
 TODO.
 
+<a name="front-end-tests"/>
 ### Backbone.js (front-end) tests
 
 TODO.
 
+<a name="back-end-tests"/>
 ### Express.js (back-end) tests
 
 TODO.
 
+<a name="functional-tests"/>
 ### Functional (web driver) tests
 
 TODO.
 
+<a name="seo"/>
 ## SEO
 
 TODO.
 
+<a name="build-for-production"/>
 ## Build for production
 
 TODO.
 
+<a name="deployment"/>
 ## Deployment
 
 TODO.
