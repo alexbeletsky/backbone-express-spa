@@ -4,9 +4,34 @@ To build single pages application is seconds, not hours.
 
 SPA infrastructure setup could be time consuming. It's typical problem, to configure `requirejs`, initial routing and view manager, to prevent memory leaks. This project could be used as good start to build own single page application.
 
-## Application
+## Contents
 
-'TheMailer' - simple app for managing emails, contacts, tasks.
+* [Description]()
+* [Application example]()
+* [Installation]()
+* [Express.js]()
+** [Serving master page]()
+** [API end-points]()
+* [Backbone.js]()
+** [RequireJS and CommonJS]()
+** [Routing]()
+** [View Manager]()
+** [Applications]()
+** [Main view and subviews]()
+* [Transitions]()
+* [Testing]()
+** [Backbone.js (front-end) tests]()
+** [Express.js (back-end) tests]()
+** [Functional (web driver) tests]()
+* [SEO]()
+* [Build for production]()
+* [Deployment]()
+
+## Description
+
+This project is complete and minimal setup for building single page applications running on ``Express.js`` framework as back-end and ``Backbone.js`` as front-end.
+
+SPA itself is rather simple concept, but it requires some infrastructure to have in place, before build up new application. This project already includes this infrastructure.
 
 ## Installation
 
@@ -34,11 +59,10 @@ Run app (development mode),
 $ node app.js
 ```
 
-## Description
+## Application example
 
-This project is complete and minimal setup for building single page applications running on ``Express.js`` framework as back-end and ``Backbone.js`` as front-end.
+'TheMailer' - simple app for managing emails, contacts, tasks.
 
-SPA itself is rather simple concept, but it requires some infrastructure to have in place, before build up new application. This project already includes this infrastructure.
 
 ## Express.js
 
@@ -211,6 +235,38 @@ var HeaderView = Backbone.View.extend({
 	}
 });
 ```
+
+## Transitions
+
+TODO.
+
+## Testing
+
+TODO.
+
+### Backbone.js (front-end) tests
+
+TODO.
+
+### Express.js (back-end) tests
+
+TODO.
+
+### Functional (web driver) tests
+
+TODO.
+
+## SEO
+
+TODO.
+
+## Build for production
+
+TODO.
+
+## Deployment
+
+TODO.
 
 # Legal Info (MIT License)
 
