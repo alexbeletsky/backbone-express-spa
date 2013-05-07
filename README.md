@@ -2,7 +2,7 @@
 
 To build single pages application is seconds, not hours.
 
-SPA infrastruction setup could be time consuming. It's typicall problem, to configure `requirejs`, intial routing and view manager, to prevent memory leaks. This project could be used as good start to build own single page application.
+SPA infrastructure setup could be time consuming. It's typical problem, to configure `requirejs`, initial routing and view manager, to prevent memory leaks. This project could be used as good start to build own single page application.
 
 ## Application
 
@@ -38,7 +38,7 @@ $ node app.js
 
 This project is complete and minimal setup for building single page applications running on ``Express.js`` framework as back-end and ``Backbone.js`` as front-end.
 
-SPA itself is rather simple concept, but it requires some infrascture to have in place, before build up new application. This project already includes this infrastructure.
+SPA itself is rather simple concept, but it requires some infrastructure to have in place, before build up new application. This project already includes this infrastructure.
 
 ## Express.js
 
@@ -67,7 +67,7 @@ To serve master pages application includes middleware component [serveMaster.js]
 
 ### API end-points
 
-API is HTTP, JSON based end-points. Sources are located at ``source/api``. Each API module retunrs a function that takes ``app`` instance and setup HTTP verb handler for a route.
+API is HTTP, JSON based end-points. Sources are located at ``source/api``. Each API module returns a function that takes ``app`` instance and setup HTTP verb handler for a route.
 
 ```js
 module.exports = function (app) {
@@ -92,7 +92,7 @@ module.exports = function (app) {
 To enable API end-point, you should modify ``app.js`` file, like
 
 ```js
-// api endpoinds
+// api endpoints
 require('./source/api/emails')(app);
 require('./source/api/contacts')(app);
 require('./source/api/tasks')(app);
@@ -102,7 +102,7 @@ require('./source/api/tasks')(app);
 
 [Backbone.js](http://backbonejs.org/) is the one of most popular front-end development framework (library). It provides abstractions for models, views, collections and able to handle client-side routing.
 
-Front-end architecture is build on modular structure and relying on [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) to allow build scallable applications.
+Front-end architecture is build on modular structure and relying on [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) to allow build scalable applications.
 
 ### RequireJS and CommonJS
 
@@ -115,12 +115,12 @@ define([
 	'yet/another/dep',
 	'text!./templates/template.html,
 	jQuery,
-	Backbone'], function(SomeDep, AnotherDep, YetAnotherDep, template, $, Backbobe) {
+	Backbone'], function(SomeDep, AnotherDep, YetAnotherDep, template, $, Backbone) {
 		// module implementation...
 	});
 ```
 
-With some time spent on Node.js programming, CommonJS style becomes more convenient to use. Fortunatelly ``RequireJS`` has [CommonJS](http://requirejs.org/docs/commonjs.html) style implementation.
+With some time spent on Node.js programming, CommonJS style becomes more convenient to use. Fortunately ``RequireJS`` has [CommonJS](http://requirejs.org/docs/commonjs.html) style implementation.
 
 ```js
 define(function (require) {
@@ -135,7 +135,7 @@ define(function (require) {
 
 ### Routing
 
-All routing logic is placed in [/core/router.js](public/js/core/router.js). There are 3 routes defined in boilerplace.
+All routing logic is placed in [/core/router.js](public/js/core/router.js). There are 3 routes defined in boilerplate.
 
 Each route handler is responsible for *starting up* new application. Application `run` function takes ``ViewManager`` instance.
 
@@ -153,7 +153,7 @@ All applications are [apps](public/js/apps) folder.
 
 [app.js](public/js/apps/home/app.js) is entry point of application and it's responsible for several things:
 
-* Fetching intial application data
+* Fetching initial application data
 * Instantiating Main View of application
 
 ```js
@@ -199,7 +199,7 @@ var MainView = Backbone.View.extend({
 
 [Handlebars](http://handlebarsjs.com/) is picked up as templating engine, powered by [require-handlebars-plugin](https://github.com/SlexAxton/require-handlebars-plugin). Templates are stored on application level in `template` folder. Handlebars plugin is configured to keep templates in `.html` files.
 
-View is loading template throught `!hbs` plugin and uses that in `render()` function.
+View is loading template through `!hbs` plugin and uses that in `render()` function.
 
 ```js
 var HeaderView = Backbone.View.extend({
