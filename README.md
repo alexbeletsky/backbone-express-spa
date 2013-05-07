@@ -12,6 +12,7 @@ NOTE: it still in **progress**. If you would like to contribute, please join the
 * [Express.js](#expressjs)
 	* [Serving master page](#serving-master-page)
 	* [API end-points](#api-endpoints)
+	* [Authorization and CORS](#authorization-cors)
 * [Backbone.js](#backbonejs)
 	* [RequireJS and CommonJS](#requirejs-and-commonjs)
 	* [Routing](#routing)
@@ -128,6 +129,11 @@ require('./source/api/emails')(app);
 require('./source/api/contacts')(app);
 require('./source/api/tasks')(app);
 ```
+
+<a name="authorization-cors"/>
+## Authorization and CORS
+
+TODO.
 
 <a name="backbonejs"/>
 ## Backbone.js
