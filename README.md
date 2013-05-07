@@ -2,6 +2,8 @@
 
 To build single pages application is seconds, not hours.
 
+NOTE: it still in **progress**. If you would like to contribute, please join the discussion/implementation of currently opened [issues](https://github.com/alexanderbeletsky/backbone-express-spa/issues).
+
 ## Contents
 
 * [Description](#description)
