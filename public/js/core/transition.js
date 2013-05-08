@@ -1,10 +1,11 @@
 define(function (require) {
 	var transition = {
-		duration: 1500,
+		duration: 700,
 
 		apply: function (el, type, callback) {
-			el.addClass('animated ' + type);
-			setTimeout(this.duration, callback);
+			var transitionClass = 'animated ' + type;
+			el.addClass(transitionClass);
+			setTimeout(callback, this.duration);
 		}
 	};
 
