@@ -46,12 +46,21 @@ module.exports = function(grunt) {
 		},
 
 		requirejs: {
-			compile: {
+			js: {
 				options: {
 					baseUrl: "public/js",
 					mainConfigFile: "public/js/main.js",
 					name: 'main',
 					out: "public/build/main.js"
+				}
+			},
+			css: {
+				options: {
+					baseUrl: 'public/css',
+					cssIn: "public/css/main.css",
+					out: "public/build/main.css",
+					cssImportIgnore: null,
+					optimizeCss: 'default'
 				}
 			}
 		}

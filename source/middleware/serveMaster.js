@@ -6,22 +6,22 @@ function skipMaster (req) {
 	});
 }
 
-function hander(title, main) {
+function hander(title, mainJs, mainCss) {
 	return function (req, res, next) {
 		if (skipMaster(req)) {
 			return next;
 		}
 
-		res.render('master', { title: title, main: main});
+		res.render('master', { title: title, mainJs: mainJs, mainCss: mainCss});
 	};
 }
 
 module.exports = {
 	development: function () {
-		return hander('SPA Boilerplate | Development', '/js/main.js');
+		return hander('SPA Boilerplate | Development', '/js/main.js', '/css/main.css');
 	},
 
 	production: function () {
-		return hander('SPA Boilerplate | Production', '/build/main.js');
+		return hander('SPA Boilerplate | Production', '/build/main.js', '/build/main.css');
 	}
 };
