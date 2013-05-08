@@ -14,11 +14,15 @@ app.configure(function(){
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(express.static(path.join(__dirname, 'public')));
-	app.use(middleware.serveMaster());
 });
 
 app.configure('development', function(){
 	app.use(express.errorHandler());
+	app.use(middleware.serveMaster.development());
+});
+
+app.configure('production', function(){
+	app.use(middleware.serveMaster.production());
 });
 
 // api endpoinds
@@ -27,5 +31,5 @@ require('./source/api/contacts')(app);
 require('./source/api/tasks')(app);
 
 http.createServer(app).listen(app.get('port'), function(){
-	console.log("Express server listening on port " + app.get('port'));
+	console.log('SPA boilerplate started: ' + app.get('port') + ' (' + process.env.NODE_ENV + ')');
 });

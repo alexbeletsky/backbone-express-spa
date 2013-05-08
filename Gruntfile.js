@@ -43,12 +43,24 @@ module.exports = function(grunt) {
 				}
 			},
 			js: ['public/js/**/*.js', 'source/**/*.js']
+		},
+
+		requirejs: {
+			compile: {
+				options: {
+					baseUrl: "public/js",
+					mainConfigFile: "public/js/main.js",
+					name: 'main',
+					out: "public/build/main.js"
+				}
+			}
 		}
 	});
 
 	// Laoded tasks
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-requirejs');
 
 	// Default task.
-	grunt.registerTask('default', ['jshint']);
+	grunt.registerTask('default', ['jshint', 'requirejs']);
 };
