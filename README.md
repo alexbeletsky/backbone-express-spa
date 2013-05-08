@@ -261,7 +261,19 @@ var HeaderView = Backbone.View.extend({
 <a name="transitions"/>
 ## Transitions
 
-TODO.
+Transitions is a very nice feature for single pages applications. It adds the visual effects of switching from one application to another.
+
+Boilerplate is relying on wonderful [animate.css](https://github.com/daneden/animate.css) library. [core/transition.js](public/js/core/transition.js) is responsible for applying transition style. It's being called from [/core/viewManager.js](public/js/core/viewManager.js).
+
+Once you decide to have transitions in your app, simply modify [master.ejs](views/master.ejs) and add ``data-transition`` attribute to application ``div``.
+
+```html
+<div class="container">
+	<div id="app" class="container" data-transition="fadeOutLeft"></div>
+</div>
+```
+
+Checkout the list of available transitions on [animate.css](https://github.com/daneden/animate.css) page. You can apply anything you want, please note "Out" transition type is suited the best.
 
 <a name="testing"/>
 ## Testing
