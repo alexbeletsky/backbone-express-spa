@@ -186,6 +186,8 @@ SPA application typical threat is *memory leaks*. Memory leaks might appear for 
 
 [/core/viewManager.js](public/js/core/viewManager.js) is responsible for disposing views during switch from one router to another.
 
+Besides of that, it handles *transitions* during application switch.
+
 <a name="applications"/>
 ### Applications
 
