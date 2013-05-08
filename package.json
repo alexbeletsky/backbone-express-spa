@@ -9,5 +9,9 @@
     "express": "3.0.0rc4",
     "ejs": "*",
     "underscore": "~1.4.4"
+  },
+  "devDependencies": {
+    "grunt-cli": "~0.1.8",
+    "grunt-contrib-jshint": "~0.3.0"
   }
 }
