@@ -19,7 +19,7 @@ NOTE: it still in **progress**. If you would like to contribute, please join the
 	* [View Manager](#view-manager)
 	* [Applications](#applications)
 	* [Main view and subviews](#main-view-and-subviews)
-* [Transitions](#transitions)
+	* [Transitions](#transitions)
 * [Testing](#testing)
 	* [Backbone.js (front-end) tests](#front-end-tests)
 	* [Express.js (back-end) tests](#back-end-tests)
