@@ -1,12 +1,8 @@
 define(function(require) {
 	var Backbone = require('Backbone');
-	var ViewManager = require('./ViewManager');
+	var viewManager = require('./viewManager');
 
 	var Router = Backbone.Router.extend({
-		initialize: function () {
-			this.viewManager = new ViewManager();
-		},
-
 		routes: {
 			'': 'home',
 			'inbox': 'inbox',
@@ -16,23 +12,23 @@ define(function(require) {
 		},
 
 		home: function () {
-			require('./../apps/home/app').run(this.viewManager);
+			require('./../apps/home/app').run(viewManager);
 		},
 
 		inbox: function () {
-			require('./../apps/inbox/app').run(this.viewManager);
+			require('./../apps/inbox/app').run(viewManager);
 		},
 
 		inboxCompose: function () {
-			require('./../apps/inbox/subapps/compose/app').run(this.viewManager);
+			require('./../apps/inbox/subapps/compose/app').run(viewManager);
 		},
 
 		contacts: function () {
-			require('./../apps/contacts/app').run(this.viewManager);
+			require('./../apps/contacts/app').run(viewManager);
 		},
 
 		tasks: function () {
-			require('./../apps/tasks/app').run(this.viewManager);
+			require('./../apps/tasks/app').run(viewManager);
 		}
 	});
 
