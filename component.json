@@ -7,6 +7,7 @@
     "backbone": "~1.0.0",
     "bootstrap": "~2.3.1",
     "requirejs": "~2.1.5",
-    "require-handlebars-plugin": "~0.4.0"
+    "require-handlebars-plugin": "~0.4.0",
+    "animate.css": "latest"
   }
 }
