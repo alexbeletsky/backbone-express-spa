@@ -29,7 +29,7 @@ define(function (require) {
 				success: function () {
 					alerts.append('<div class="alert alert-success"><b>Success!</b> Message sent. You will be redirected to inbox now...</div>');
 					setTimeout(function () {
-						Router.navigate('/inbox', {trigger: true});
+						window.Router.navigate('/inbox', {trigger: true});
 					}, 1500);
 				}
 			});
