@@ -23,7 +23,7 @@ app.configure('development', function(){
 
 app.configure('production', function(){
 	app.use(express.compress());
-	app.use(express.static(path.join(__dirname, 'public')));
+	app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2678400000 }));
 	app.use(middleware.serveMaster.production());
 });
 
