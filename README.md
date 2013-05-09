@@ -29,6 +29,7 @@ NOTE: it still in **progress**. If you would like to contribute, please join the
 	* [Concatenate and minify](#concatenate-and-minify)
 	* [Gzip content](#gzip-content)
 	* [Development and production](#gzip-content)
+	* [Optimization results](#optimization-results)
 * [Deployment](#deployment)
 
 <a name="description"/>
@@ -331,8 +332,35 @@ The result of the grunt run is new folder [/public/build](/public/build/) that c
 <a name="gzip-content"/>
 ### Gzip content
 
+Besides concatenation, it's important to compress resources. Express.js includes this functionality out of the box, as [compress()](http://expressjs.com/api.html#compress) middleware function.
+
 <a name="development-and-production"/>
 ### Development and production
+
+The configuration distinction goes in [app.js](app.js) file.
+
+```js
+app.configure('development', function(){
+	app.use(express.errorHandler());							// apply error handler
+	app.use(express.static(path.join(__dirname, 'public')));
+	app.use(middleware.serveMaster.development());				// apply development mode master page
+});
+
+app.configure('production', function(){
+	app.use(express.compress());								// apply gzip content
+	app.use(express.static(path.join(__dirname, 'public')));
+	app.use(middleware.serveMaster.production());				// apply production mode master page
+});
+```
+
+[serveMaster.js](source/middleware/serveMaster.js) middleware component is would serve different version of master page, for different mode. In development mode, it would use uncompressed JavaScript and CSS, in production mode, ones that placed in [/public/build](/public/build/) folder.
+
+<a name="optimization-results"/>
+### Optimization results
+
+On a left side you see application running in development mode, on a right side in  production mode.
+
+![optimization results](/public/img/optimizations.png?raw=true)
 
 <a name="deployment"/>
 ## Deployment
