@@ -323,7 +323,7 @@ To simplify the process, we'll use [GruntJS](http://gruntjs.com/) tasks runner. 
 
 [Gruntfile.js](Gruntfile.js) contains all required configuration. To run grunt,
 
-```bash
+```
 $ grunt
 ```
 
@@ -361,6 +361,12 @@ app.configure('production', function(){
 On a left side you see application running in development mode, on a right side in  production mode.
 
 ![optimization results](/public/img/optimizations.png?raw=true)
+
+Even for such small application as 'TheMailer', the benefits are obvious:
+
+* Requests: 55 / 4 ~ 14 times fewer.
+* Payload: 756Kb / 43.4Kb ~ 17 times smaller.
+* Load time: 898ms / 153ms ~ 6 times faster.
 
 <a name="deployment"/>
 ## Deployment
