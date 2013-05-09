@@ -307,12 +307,12 @@ TODO.
 <a name="build-for-production"/>
 ## Build for production
 
-Modern web applications contain a lot of JavaScript/CSS files. While application is *loading* all that recourses have to be in-place, so browser issuing HTTP requests to load them. As more application grow, as more requests need to be done.. as slower initial loading is. There are two ways of *optimization* of initial application loading:
+Modern web applications contain a lot of JavaScript/CSS files. While application is *loading* all that recourses have to be in-place, so browser issuing HTTP requests to fetch them. As more application grow, as more requests need to be done.. as slower initial loading is. There are two ways of *optimization* of initial application loading:
 
 * concatenate and minify (decrease HTTP request)
 * gzip content (decrease payload size)
 
-Application could operate in - development, production. In development mode, we don't care about optimizations at all. Even more, we are interested to get not processed source code, to be able to debug easily. In production mode, we have to apply as much effort as possible to increase initial load time.
+Application could operate in several modes - development, production. In development mode, we don't care about optimizations at all. Even more, we are interested to get not processed source code, to be able to debug easily. In production mode, we have to apply as much effort as possible to decrease initial load time.
 
 <a name="concatenate-and-minify"/>
 ### Concatenate and minify
