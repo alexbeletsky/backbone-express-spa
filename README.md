@@ -26,6 +26,9 @@ NOTE: it still in **progress**. If you would like to contribute, please join the
 	* [Functional (web driver) tests](#functional-tests)
 * [SEO](#seo)
 * [Build for production](#build-for-production)
+	* [Concatenate and minify](#concatenate-and-minify)
+	* [Gzip content](#gzip-content)
+	* [Development and production](#gzip-content)
 * [Deployment](#deployment)
 
 <a name="description"/>
@@ -310,7 +313,16 @@ Modern web applications contain a lot of JavaScript/CSS files. While application
 
 Application could operate in - development, production. In development mode, we don't care about optimizations at all. Even more, we are interested to get not processed source code, to be able to debug easily. In production mode, we have to apply as much effort as possible to increase initial load time.
 
+<a name="concatenate-and-minify"/>
+### Concatenate and minify
 
+[RequireJS](http://requirejs.org/) comes together with [optimization](http://requirejs.org/docs/optimization.html) tool, called `r.js`. It's able to concatenate and minify both JavaScript and CSS code.
+
+<a name="gzip-content"/>
+### Gzip content
+
+<a name="development-and-production"/>
+### Development and production
 
 <a name="deployment"/>
 ## Deployment
