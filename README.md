@@ -318,6 +318,16 @@ Application could operate in - development, production. In development mode, we 
 
 [RequireJS](http://requirejs.org/) comes together with [optimization](http://requirejs.org/docs/optimization.html) tool, called `r.js`. It's able to concatenate and minify both JavaScript and CSS code.
 
+To simplify the process, we'll use [GruntJS](http://gruntjs.com/) tasks runner. GruntJS is very handy tool, with great community around and very rich contrib library. There is a special task to handle `RequireJS` optimizations, called [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs).
+
+[Gruntfile.js](Gruntfile.js) contains all required configuration. To run grunt,
+
+```bash
+$ grunt
+```
+
+The result of the grunt run is new folder [/public/build](/public/build/) that contains 2 files: `main.css`, `main.js` - concatenated and minified JavaScript and CSS code.
+
 <a name="gzip-content"/>
 ### Gzip content
 
