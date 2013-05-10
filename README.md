@@ -348,7 +348,7 @@ app.configure('development', function(){
 
 app.configure('production', function(){
 	app.use(express.compress());								// apply gzip content
-	app.use(express.static(path.join(__dirname, 'public')));
+	app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneMonth }));
 	app.use(middleware.serveMaster.production());				// apply production mode master page
 });
 ```

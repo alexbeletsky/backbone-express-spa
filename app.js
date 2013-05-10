@@ -5,6 +5,8 @@ var middleware = require('./source/middleware');
 
 var app = express();
 
+var oneMonth = 2678400000;
+
 app.configure(function(){
 	app.set('port', process.env.PORT || 3000);
 	app.set('views', __dirname + '/views');
@@ -23,7 +25,7 @@ app.configure('development', function(){
 
 app.configure('production', function(){
 	app.use(express.compress());
-	app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2678400000 }));
+	app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneMonth }));
 	app.use(middleware.serveMaster.production());
 });
 
