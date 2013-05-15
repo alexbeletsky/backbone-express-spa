@@ -1,3 +1,11 @@
+var crypto = require('crypto');
+var fs = require('fs');
+
+function createFileSha(filenane) {
+	var sha = crypto.createHash('sha1');
+	return sha.update(fs.readFileSync(filenane));
+}
+
 module.exports = function(grunt) {
 	grunt.initConfig({
 		meta: {
@@ -63,13 +71,28 @@ module.exports = function(grunt) {
 					optimizeCss: 'default'
 				}
 			}
+		},
+
+		hashres: {
+			options: {
+				fileNameFormat: '${name}-${hash}.${ext}'
+			},
+			prod: {
+				src: [
+					'public/build/main.js',
+					'public/build/main.css'
+				],
+				dest: ''
+			}
 		}
+
 	});
 
 	// Laoded tasks
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
+	grunt.loadNpmTasks('grunt-hashres');
 
 	// Default task.
-	grunt.registerTask('default', ['jshint', 'requirejs']);
+	grunt.registerTask('default', ['jshint', 'requirejs', 'hashres']);
 };

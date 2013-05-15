@@ -31,6 +31,7 @@ NOTE: it still in **progress**. If you would like to contribute, please join the
 	* [Development and production](#gzip-content)
 	* [Optimization results](#optimization-results)
 * [Deployment](#deployment)
+* [Yeoman generator]((#generator))
 
 <a name="description"/>
 ## Description
@@ -370,6 +371,12 @@ Even for such small application as 'TheMailer', the benefits are obvious:
 
 <a name="deployment"/>
 ## Deployment
+
+TODO.
+
+
+<a name="generator"/>
+## Yeoman generator
 
 TODO.
 
