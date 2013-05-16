@@ -81,8 +81,7 @@ module.exports = function(grunt) {
 				src: [
 					'public/build/main.js',
 					'public/build/main.css'
-				],
-				dest: ''
+				]
 			}
 		}
 
