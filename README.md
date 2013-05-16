@@ -359,11 +359,11 @@ app.configure('production', function(){
 <a name="cache-busting" />
 ### Cache busting
 
-Caching is in general good since it helps to application to load faster, but it could hurt you while you re-deploy application. Browsers does not track the actual content of file, so it's would be unclear to it should it update re-read resource or use one from cache.
+Caching is in general good since it helps to application to be loaded faster, but it could hurt while you re-deploy application. Browsers do not track the actual content of file, so if the content has changed, but URL still the same, browser will ignore that.
 
-Besides of that, different browsers have different caching strategies. IE for instance, is 'famous' with is aggressive caching strategies.
+Besides, different browsers have different caching strategies. IE for instance, is 'famous' with is aggressive caching.
 
-Cache busting is widely adopted technique. There are some different implementations for that, but one of the most effective is: name your `cache-busting` resources in the way, so if content changing the name would change as well. Basic implementation is to prefix file names with hash computed on file contents.
+Cache busting is widely adopted technique. There are some different implementations for that, but one of the most effective is: name your resources in the way, so if content has changed the name of resource would change as well. Basic implementation is to prefix file names with **hash** computed on file contents.
 
 Boilerplate uses [grunt-hashres](https://github.com/Luismahou/grunt-hashres) task for that (currently I'm using my own [fork](https://github.com/alexanderbeletsky/grunt-hashres), hope that changes are promoted to main repo soon). That task transforms the [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) output files `main.js`, `main.css` into something like `main-23cbb34ffaabd22d887abdd67bfe5b2c.js`, `main-5a09ac388df506a82647f47e3ffd5187.css`.
 
