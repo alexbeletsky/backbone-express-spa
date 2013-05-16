@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var client = require('./../client');
 
 function skipMaster (req) {
 	return _.any(['/api', '/components', '/css', '/js', '/build'], function (url) {
@@ -9,7 +10,7 @@ function skipMaster (req) {
 function hander(title, mainJs, mainCss) {
 	return function (req, res, next) {
 		if (skipMaster(req)) {
-			return next;
+			return next();
 		}
 
 		res.render('master', { title: title, mainJs: mainJs, mainCss: mainCss});
@@ -22,6 +23,6 @@ module.exports = {
 	},
 
 	production: function () {
-		return hander('SPA Boilerplate | Production', '/build/main.js', '/build/main.css');
+		return hander('SPA Boilerplate | Production', client.js, client.css);
 	}
 };
