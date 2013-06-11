@@ -1,4 +1,4 @@
-module.exports = function (app) {
+var emails = function (app) {
 	var container = [{
 			subject: 'Hello, I\'m first message',
 			message: 'Message body',
@@ -39,3 +39,5 @@ module.exports = function (app) {
 		res.send(201);
 	});
 };
+
+module.exports = emails;

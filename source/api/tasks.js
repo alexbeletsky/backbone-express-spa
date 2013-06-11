@@ -1,4 +1,4 @@
-module.exports = function (app) {
+var tasks = function (app) {
 	var container = [{
 			description: 'backbone-express-spa skeleton',
 			dueDate: '04/25/2013',
@@ -18,3 +18,5 @@ module.exports = function (app) {
 		res.json(container);
 	});
 };
+
+module.exports = tasks;

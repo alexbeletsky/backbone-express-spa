@@ -1,4 +1,4 @@
-module.exports = function (app) {
+var contacts = function (app) {
 	var container = [{
 			firstName: 'Alexander',
 			lastName: 'Beletsky',
@@ -21,3 +21,5 @@ module.exports = function (app) {
 		res.json(container);
 	});
 };
+
+module.exports = contacts;
