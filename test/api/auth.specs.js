@@ -1,26 +1,52 @@
 var request = require('request');
-var url = 'http://localhost:3000/api/auth';
+var root = 'http://localhost:3000/api/auth';
 
 describe('/api/auth.js', function () {
 	var error, response, body;
-	describe('get', function () {
-		beforeEach(function (done) {
-			request(url, function (err, resp) {
-				error = err;
-				response = resp;
-				body = resp.body;
 
-				done();
+	describe('when user signups', function () {
+		var url, payload, error, body;
+
+		beforeEach(function () {
+			url = root + '/signup';
+		});
+
+		describe('empy payload', function () {
+			beforeEach(function () {
+				payload = {};
+			});
+
+			beforeEach(function (done) {
+				request.post({url: url, json: true}, function (err, resp) {
+					error = error;
+					response = resp;
+					body = resp.body;
+					done();
+				});
+			});
+
+			it('should return 412', function () {
+				expect(response.statusCode).to.equal(412);
 			});
 		});
 
-		it('should give no error', function () {
-			console.log(error);
+		describe('and username is missing', function () {
+			it ('should return 412', function () {
+
+			});
 		});
 
-		it('it should exist', function () {
-			expect(response.statusCode).to.equal(200);
+		describe('and password is missing', function () {
+			it ('should return 412', function () {
+
+			});
+
+		});
+
+		describe('with username and password', function () {
+			it ('should return 200', function () {
+
+			});
 		});
 	});
-
 });
