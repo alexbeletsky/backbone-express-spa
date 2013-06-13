@@ -11,4 +11,4 @@ process.exit = function (code) {
 };
 
 require('./app');
-require('./node_modules/.bin/mocha');
+require('./node_modules/mocha/bin/_mocha');
