@@ -1,3 +1,4 @@
+var express = require('express');
 var crypto = require('crypto');
 var bcrypt = require('bcrypt-nodejs');
 var _ = require('underscore');
@@ -22,6 +23,11 @@ var auth = function (app) {
 		checkUser,
 		createToken,
 		returnToken
+	);
+
+	app.get('/api/auth/validate',
+		validateToken,
+		returnOk
 	);
 
 	function storeUser(req, res, next) {
@@ -105,6 +111,34 @@ var auth = function (app) {
 		}
 
 		next();
+	}
+
+	function validateToken (req, res, next) {
+		var basic = express.basicAuth(hmacAuthentication);
+		return basic(req, res, next);
+
+		function hmacAuthentication(user, password) {
+			var token = new Buffer(password, 'base64').toString();
+			var parsed = token.split(';');
+
+			if (parsed.length !== 3) {
+				return false;
+			}
+
+			var username = parsed[0], timespamp = parsed[1], recievedHmac = parsed[2];
+			var message = username + ';' + timespamp;
+			var computedHmac = crypto.createHmac('sha1', AUTH_SIGN_KEY).update(message).digest('hex');
+
+			if (recievedHmac !== computedHmac) {
+				return false;
+			}
+
+			return true;
+		}
+	}
+
+	function returnOk(req, res, next) {
+		res.send(200);
 	}
 };
 

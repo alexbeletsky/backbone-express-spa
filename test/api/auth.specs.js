@@ -1,4 +1,6 @@
 var request = require('request');
+var moment = require('moment');
+var crypto = require('crypto');
 var root = 'http://localhost:3000/api/auth';
 
 describe('/api/auth.js', function () {
@@ -209,11 +211,41 @@ describe('/api/auth.js', function () {
 				token = 'iam_compeletely_invalid_token';
 			});
 
-			beforeEach(function () {
-				request.get({url: url + '?token=' + token}, function (err, response) {
-
+			beforeEach(function (done) {
+				request.get({url: url, auth: {user: 'username', password: token}}, function (err, resp) {
+					error = err;
+					response = resp;
+					done();
 				});
 			});
+
+			it ('should return 404 (unauthorized)', function () {
+				expect(response.statusCode).to.equal(401);
+			});
 		});
+
+		describe.only('faked token', function () {
+			beforeEach(function () {
+				var key = 'i_dont_know_which_key_used_on_server';
+				var username = 'user', timespamp = moment().valueOf();
+				var message = username + ';' + timespamp;
+				var hmac = crypto.createHmac('sha1', key).update(message).digest('hex');
+
+				token = new Buffer(username + ';' + timespamp + ';' + hmac).toString('base64');
+			});
+
+			beforeEach(function (done) {
+				request.get({url: url, auth: {user: 'username', password: token}}, function (err, resp) {
+					error = err;
+					response = resp;
+					done();
+				});
+			});
+
+			it ('should return 404 (unauthorized)', function () {
+				expect(response.statusCode).to.equal(401);
+			});
+		});
+
 	});
 });
