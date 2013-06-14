@@ -1,3 +1,4 @@
 module.exports = {
-	serveMaster: require('./serveMaster')
+	serveMaster: require('./serveMaster'),
+	auth: require('./auth')
 };
