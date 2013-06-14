@@ -30,6 +30,7 @@ app.configure('production', function(){
 });
 
 // api endpoinds
+require('./source/api/auth')(app);
 require('./source/api/emails')(app);
 require('./source/api/contacts')(app);
 require('./source/api/tasks')(app);

@@ -1,7 +1,7 @@
 --require ./test/common.js
---reporter dot
+--reporter spec
 --ui bdd
 --recursive
 --colors
 --timeout 60000
---slow 100
+--slow 300
