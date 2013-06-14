@@ -287,7 +287,15 @@ Checkout the list of available transitions on [animate.css](https://github.com/d
 <a name="testing"/>
 ## Testing
 
-TODO.
+Testing is key of quality product. Both sides (front and back) have to covered with tests to tackle the complexity.
+
+### Execute all tests
+
+To execute all tests, run
+
+```
+$ npm test
+```
 
 <a name="front-end-tests"/>
 ### Backbone.js (front-end) tests
