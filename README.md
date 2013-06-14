@@ -1,6 +1,10 @@
 # Backbone.js + Express.js SPA boilerplate
 
-To build single pages application is seconds, not hours.
+This project is supposed to be a *starter kit* helping a community to build Single Page architectures based upon Backbone.js and Express.js frameworks.
+
+Programatic approach is key. The simplest approach as possible, just to show the way not finalized application. It covers aspects of front-end desing, as well as open API.
+
+You are the one, who can help project to grow. Join now and contribute, your help is much appreciated.
 
 NOTE: it still in **progress**. If you would like to contribute, please join the discussion/implementation of currently opened [issues](https://github.com/alexanderbeletsky/backbone-express-spa/issues).
 
