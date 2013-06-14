@@ -224,7 +224,7 @@ describe('/api/auth.js', function () {
 			});
 		});
 
-		describe.only('faked token', function () {
+		describe('faked token', function () {
 			beforeEach(function () {
 				var key = 'i_dont_know_which_key_used_on_server';
 				var username = 'user', timespamp = moment().valueOf();
