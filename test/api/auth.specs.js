@@ -2,11 +2,9 @@ var request = require('request');
 var root = 'http://localhost:3000/api/auth';
 
 describe('/api/auth.js', function () {
-	var error, response, body;
+	var url, error, response, body, payload;
 
 	describe('when user signups', function () {
-		var url, payload, error, body;
-
 		beforeEach(function () {
 			url = root + '/signup';
 		});
@@ -95,8 +93,6 @@ describe('/api/auth.js', function () {
 	});
 
 	describe('when user logins', function () {
-		var url, payload, error, body;
-
 		beforeEach(function () {
 			url = root + '/login';
 		});
@@ -198,8 +194,26 @@ describe('/api/auth.js', function () {
 			it ('should return token', function () {
 				expect(body.token).to.be.ok;
 			});
+		});
+	});
 
+	describe('when validating token', function () {
+		var token;
+
+		beforeEach(function () {
+			url = root + '/validate';
 		});
 
+		describe('invalid token', function () {
+			beforeEach(function () {
+				token = 'iam_compeletely_invalid_token';
+			});
+
+			beforeEach(function () {
+				request.get({url: url + '?token=' + token}, function (err, response) {
+
+				});
+			});
+		});
 	});
 });
