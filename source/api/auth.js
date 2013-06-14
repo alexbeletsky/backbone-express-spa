@@ -4,7 +4,7 @@ var bcrypt = require('bcrypt-nodejs');
 var _ = require('underscore');
 var moment = require('moment');
 
-var TOKEN_TTL_MINUTES = 30;
+var TOKEN_TTL_MINUTES = 60;
 var AUTH_SIGN_KEY = '95810db3f765480999a8d5089b0815bd4b55e831';
 
 var auth = function (app) {
@@ -130,6 +130,11 @@ var auth = function (app) {
 			var computedHmac = crypto.createHmac('sha1', AUTH_SIGN_KEY).update(message).digest('hex');
 
 			if (recievedHmac !== computedHmac) {
+				return false;
+			}
+
+			var currentTimespamp = moment(), recievedTimespamp = moment(+timespamp);
+			if (recievedTimespamp.diff(currentTimespamp, 'minutes') > TOKEN_TTL_MINUTES) {
 				return false;
 			}
 

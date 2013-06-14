@@ -189,7 +189,7 @@ describe('/api/auth.js', function () {
 				});
 			});
 
-			it ('should return 200 (token created status)', function () {
+			it ('should return 201 (token created status)', function () {
 				expect(response.statusCode).to.equal(201);
 			});
 
@@ -244,6 +244,65 @@ describe('/api/auth.js', function () {
 
 			it ('should return 404 (unauthorized)', function () {
 				expect(response.statusCode).to.equal(401);
+			});
+		});
+
+		describe('expired token', function () {
+			beforeEach(function () {
+				var key = '95810db3f765480999a8d5089b0815bd4b55e831';
+				var username = 'user', timespamp = moment().add('hours', 1).add('minutes', 2).valueOf();
+				var message = username + ';' + timespamp;
+				var hmac = crypto.createHmac('sha1', key).update(message).digest('hex');
+
+				token = new Buffer(username + ';' + timespamp + ';' + hmac).toString('base64');
+			});
+
+			beforeEach(function (done) {
+				request.get({url: url, auth: {user: 'username', password: token}}, function (err, resp) {
+					error = err;
+					response = resp;
+					done();
+				});
+			});
+
+			it ('should return 404 (unauthorized)', function () {
+				expect(response.statusCode).to.equal(401);
+			});
+		});
+
+		describe('valid token', function () {
+			var signup;
+
+			beforeEach(function () {
+				signup = root + '/signup';
+			});
+
+			beforeEach(function () {
+				payload = {username: 'a@a.com', password: 'secret'};
+			});
+
+			// signup
+			beforeEach(function (done) {
+				request.post({url: signup, body: payload, json: true}, function (err, resp) {
+					error = error;
+					response = resp;
+					body = resp.body;
+					token = body.token;
+
+					done();
+				});
+			});
+
+			beforeEach(function (done) {
+				request.get({url: url, auth: {user: 'username', password: token}}, function (err, resp) {
+					error = err;
+					response = resp;
+					done();
+				});
+			});
+
+			it ('should return 200 (authenticated)', function () {
+				expect(response.statusCode).to.equal(200);
 			});
 		});
 
