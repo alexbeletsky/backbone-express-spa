@@ -77,10 +77,6 @@ var auth = function (app) {
 		return callback (null, user);
 	}
 
-	function returnToken(req, res, next) {
-		res.json(201, {token: req.token});
-	}
-
 	function validateSignup(req, res, next) {
 		var signup = req.body;
 
@@ -93,6 +89,10 @@ var auth = function (app) {
 		}
 
 		next();
+	}
+
+	function returnToken(req, res, next) {
+		res.json(201, {token: req.token});
 	}
 
 	function returnOk(req, res, next) {
