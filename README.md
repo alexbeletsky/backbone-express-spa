@@ -142,7 +142,17 @@ require('./source/api/tasks')(app);
 <a name="authorization-cors"/>
 ## Authorization and CORS
 
-TODO.
+While you design new open API, authorization is probably one of the most important topics to consider.
+
+There are many ways you can implement authorization. Choices you made will affect how much of API is usable and scalable. Before we jump in, I highly recommend blog post by [Vinay Sahni](https://twitter.com/veesahni) regarding [Pragmatic RESTFull API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api).
+
+Traditional authorization algorithms are typically using some kind of `token-based` authorization. Means, each user of API is getting registered and special token (pseudo-random looking string) is issued and associated with that user. Token contains user identification + some meta info, encrypted with some simple algorithm as `base64`. For each request, users sends this token (in HTTP headers of query), server lookups for this token and if it finds match between encrypted `userId` and token, request treated as authenticated.
+
+Tokens always have to be transported by secured channel as SSL.
+
+The only problem with that approach is that each request requires at least one *expensive* database call. This could be avoided by applying some cryptography on authorization procedure. One of the approaches is usage of self-signed [HMAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code) tokens. It's easy to implement and it scales very nice.
+
+**WORK IN PROGRESS HERE**
 
 <a name="backbonejs"/>
 ## Backbone.js
