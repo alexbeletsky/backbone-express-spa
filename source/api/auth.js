@@ -7,12 +7,19 @@ var TOKEN_TTL_MINUTES = 30;
 var AUTH_SIGN_KEY = '95810db3f765480999a8d5089b0815bd4b55e831';
 
 var auth = function (app) {
-	// user storage
+
 	var users = [];
 
 	app.post('/api/auth/signup',
 		validateSignup,
 		storeUser,
+		createToken,
+		returnToken
+	);
+
+	app.post('/api/auth/login',
+		validateSignup,
+		checkUser,
 		createToken,
 		returnToken
 	);
@@ -37,6 +44,36 @@ var auth = function (app) {
 				return next (null, signup);
 			});
 		});
+	}
+
+	function checkUser(req, res, next) {
+		var signup = req.body;
+		foundUser(signup.username, function (err, user) {
+			if (err) {
+				return next({message: 'user not found', status: 404});
+			}
+
+			bcrypt.compare(signup.password, user.password, function (err, matched) {
+				if (!matched) {
+					return next({message: 'password is wrong', status: 401});
+				}
+
+				req.user = user;
+				next();
+			});
+		});
+	}
+
+	function foundUser(username, callback) {
+		var user = _.find(users, function (u) {
+			return u.username === username;
+		});
+
+		if (!user) {
+			return callback('not found');
+		}
+
+		return callback (null, user);
 	}
 
 	function createToken(req, res, next) {
