@@ -231,7 +231,7 @@ Now, server receives token back and request need to be authenticated.
 
 If token is compromised or wrong, HMAC guarantees that signatures will never match, except attacker is aware of server private key.
 
-## API Authorization implementation
+### API Authorization implementation
 
 API exposes few methods,
 
