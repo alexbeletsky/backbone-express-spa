@@ -152,7 +152,84 @@ Tokens always have to be transported by secured channel as SSL.
 
 The only problem with that approach is that each request requires at least one *expensive* database call. This could be avoided by applying some cryptography on authorization procedure. One of the approaches is usage of self-signed [HMAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code) tokens. It's easy to implement and it scales very nice.
 
-**WORK IN PROGRESS HERE**
+### HMAC based API authorization
+
+The routine could be slitted to such steps:
+
+1. Client signs ups to API by sending `username` and `password`.
+2. Client get registered, `password` hashed and placed to `users` collection in DB.
+3. Authorization token is *issued*.
+4. Client receives token back.
+5. For all further requests client sends token as `password` in [authorization header](http://tools.ietf.org/html/rfc1945#section-10.2) of HTTP request.
+6. Server *validates* the token, if it's valid request treated as authenticated.
+
+Note, token *validation* procedure doesn't require any DB request everything all depends on computation.
+
+### HMAC token
+
+Let's take a look how to issue new authorization token. We typically want to reduce token lifetime, in case it's stolen. So, we want to include some meta information about time it's issued as well it's owner. This information is concatenated and HMAC algorithm applied, using servers *private* key.
+
+After we add same info in open text and encrypt result by `base64`.
+
+```js
+	var timespamp = moment();
+	var message = username + ';' + timespamp.valueOf();
+	var hmac = crypto.createHmac('sha1', AUTH_SIGN_KEY).update(message).digest('hex');
+	var token = username + ';' + timespamp.valueOf() + ';' + hmac;
+	var tokenBase64 = new Buffer(token).toString('base64');
+```
+
+Here, `AUTH_SIGN_KEY` is private server key and `tokenBase64` is the final result, sent back to client.
+
+### Authorization
+
+Client stores the token to cookie or localstorage and using it for *each* API request as part of Basic authentication header.
+
+Request.js example,
+
+```js
+	request.get({url: url, auth: {user: username, password: token}}, function (err, resp) {
+		error = err;
+		response = resp;
+		done();
+	});
+```
+
+jQuery example,
+
+```js
+	$.ajax
+	({
+		type: "GET",
+		url: "index1.php",
+		dataType: 'json',
+		async: false,
+		username: username,
+		password: token,
+		success: function (){
+			done()
+		}
+	});
+```
+
+Backbone.sync example,
+
+```
+TODO.
+```
+
+### Token validation
+
+Now, server receives token back and request need to be authenticated.
+
+1. Server decodes token `base64` and parses out all token information (simple split by ';').
+2. Server computes HMAC signature of received `username` and `timestamp` using the *same* private server key.
+3. It compares it with HMAC received in token.
+4. If HMAC's are different, request is not authorized, 401 reply.
+5. Otherwise, server checks token TTL, if expires , 401 reply.
+6. Otherwise request is authenticated.
+
+If token is compromised or wrong, HMAC guarantees that signatures will never match, except attacker is aware of server private key.
 
 <a name="backbonejs"/>
 ## Backbone.js
