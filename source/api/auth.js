@@ -3,7 +3,6 @@ var _ = require('underscore');
 var middleware = require('./../middleware');
 
 var auth = function (app) {
-
 	// fake user storage.. some DB use in real app
 	var users = [];
 
@@ -26,9 +25,6 @@ var auth = function (app) {
 		returnOk
 	);
 
-	/*
-	* Stores user to fake storage, applying bcrypt salting/hashing of password.
-	*/
 	function storeUser(req, res, next) {
 		var signup = _.extend(req.body, { id: users.length });
 
@@ -51,9 +47,6 @@ var auth = function (app) {
 		});
 	}
 
-	/*
-	* Checks user in storage comparing submitted password with stored hash.
-	*/
 	function checkUser(req, res, next) {
 		var signup = req.body;
 		foundUser(signup.username, function (err, user) {
