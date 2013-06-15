@@ -245,7 +245,7 @@ Signup, used as initial client registration. Login is called each time, new toke
 
 There is [source/middleware/auth.js](source/middleware/auth.js) that exposes `createToken` and `validateToken` functions. Create token is applied to `signup` and `login` api methods, `validateToken` is applied on every API that requires authorization.
 
-Checkout [test/api/auth.specs.js](test/api/auth.specs.js) that specifies how authorization works in details.
+Checkout [test/api/auth.specs.js](test/api/auth.specs.js) that specifies how authorization works in details, [source/api/auth.js](source/api/auth.js) for end-point implementation.
 
 <a name="backbonejs"/>
 ## Backbone.js
