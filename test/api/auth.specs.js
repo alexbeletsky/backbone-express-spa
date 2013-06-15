@@ -11,7 +11,7 @@ describe('/api/auth.js', function () {
 			url = root + '/signup';
 		});
 
-		describe('with correct credentials', function () {
+		describe('with wrong credentials', function () {
 			describe('empy payload', function () {
 				beforeEach(function () {
 					payload = {};
