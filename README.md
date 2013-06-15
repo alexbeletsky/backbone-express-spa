@@ -172,11 +172,11 @@ Let's take a look how to issue new authorization token. We typically want to red
 After we add same info in open text and encrypt result by `base64`.
 
 ```js
-	var timespamp = moment();
-	var message = username + ';' + timespamp.valueOf();
-	var hmac = crypto.createHmac('sha1', AUTH_SIGN_KEY).update(message).digest('hex');
-	var token = username + ';' + timespamp.valueOf() + ';' + hmac;
-	var tokenBase64 = new Buffer(token).toString('base64');
+var timespamp = moment();
+var message = username + ';' + timespamp.valueOf();
+var hmac = crypto.createHmac('sha1', AUTH_SIGN_KEY).update(message).digest('hex');
+var token = username + ';' + timespamp.valueOf() + ';' + hmac;
+var tokenBase64 = new Buffer(token).toString('base64');
 ```
 
 Here, `AUTH_SIGN_KEY` is private server key and `tokenBase64` is the final result, sent back to client.
@@ -188,28 +188,28 @@ Client stores the token to cookie or localstorage and using it for *each* API re
 Request.js example,
 
 ```js
-	request.get({url: url, auth: {user: username, password: token}}, function (err, resp) {
-		error = err;
-		response = resp;
-		done();
-	});
+request.get({url: url, auth: {user: username, password: token}}, function (err, resp) {
+	error = err;
+	response = resp;
+	done();
+});
 ```
 
 jQuery example,
 
 ```js
-	$.ajax
-	({
-		type: "GET",
-		url: "index1.php",
-		dataType: 'json',
-		async: false,
-		username: username,
-		password: token,
-		success: function (){
-			done()
-		}
-	});
+$.ajax
+({
+	type: "GET",
+	url: "index1.php",
+	dataType: 'json',
+	async: false,
+	username: username,
+	password: token,
+	success: function (){
+		done()
+	}
+});
 ```
 
 Backbone.sync example,
@@ -230,6 +230,22 @@ Now, server receives token back and request need to be authenticated.
 6. Otherwise request is authenticated.
 
 If token is compromised or wrong, HMAC guarantees that signatures will never match, except attacker is aware of server private key.
+
+## API Authorization implementation
+
+API exposes few methods,
+
+```
+/api/auth/signup
+/api/auth/login
+/api/auth/validate
+```
+
+Signup, used as initial client registration. Login is called each time, new token have to issued. Validate is used to check token validity (it's used as internal method mostly).
+
+There is [source/middleware/auth.js](source/middleware/auth.js) that exposes `createToken` and `validateToken` functions. Create token is applied to `signup` and `login` api methods, `validateToken` is applied on every API that requires authorization.
+
+Checkout [test/api/auth.specs.js](test/api/auth.specs.js) that specifies how authorization works in details.
 
 <a name="backbonejs"/>
 ## Backbone.js
