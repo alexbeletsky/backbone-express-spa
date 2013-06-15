@@ -49,7 +49,7 @@ var auth = function (app) {
 
 	function checkUser(req, res, next) {
 		var signup = req.body;
-		foundUser(signup.username, function (err, user) {
+		findUser(signup.username, function (err, user) {
 			if (err) {
 				return next({message: 'user not found', status: 404});
 			}
@@ -65,7 +65,7 @@ var auth = function (app) {
 		});
 	}
 
-	function foundUser(username, callback) {
+	function findUser(username, callback) {
 		var user = _.find(users, function (u) {
 			return u.username === username;
 		});
