@@ -215,15 +215,14 @@ $.ajax
 Backbone.sync example,
 
 ```js
-// Backbone.sync delegates to Backbone.ajax by default. 
-// Backbone.ajax in turn delegates to $.ajax
-// Override the default implementation of `Backbone.ajax` to include username & token on every request
 Backbone.ajax = function() {
-	_.extend(arguments[0], {
+	var defaults = arguments[0];
+	_.extend(defaults, {
 		username: username,
 		password: token
 	});
-return Backbone.$.ajax.apply(Backbone.$, arguments);
+
+	return Backbone.$.ajax.apply(Backbone.$, arguments);
 };
 ```
 
