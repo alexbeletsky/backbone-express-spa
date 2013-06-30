@@ -219,7 +219,7 @@ describe('/api/auth.js', function () {
 				});
 			});
 
-			it ('should return 404 (unauthorized)', function () {
+			it ('should return 401 (unauthorized)', function () {
 				expect(response.statusCode).to.equal(401);
 			});
 		});
