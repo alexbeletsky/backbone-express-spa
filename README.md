@@ -103,7 +103,7 @@ After master page is served back to client the rest of UI and logic is build by 
 <a name="serving-master-page"/>
 ### Serving master page
 
-To serve master pages application includes middleware component [serveMaster.js](source/middleware/serveMaster.js). It would respond with master page html for any request, expect the requests for `/api`, `/components`, `/css/` or `/js`.
+To serve master pages application includes middleware component [serveMaster.js](source/middleware/serveMaster.js). It would respond with master page html for any request, except the requests for `/api`, `/components`, `/css/` or `/js`.
 
 <a name="api-endpoints"/>
 ### API end-points
