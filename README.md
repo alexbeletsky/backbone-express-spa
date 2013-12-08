@@ -255,6 +255,32 @@ There is [source/middleware/auth.js](source/middleware/auth.js) that exposes `cr
 
 Checkout [test/api/auth.specs.js](test/api/auth.specs.js) that specifies how authorization works in details, [source/api/auth.js](source/api/auth.js) for end-point implementation.
 
+### CORS
+
+CORS ([Cross Origin Resource Sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)) have to be enabled to allow the API to be used from client applications, running on domain different than API deployment domain. For instance, your API can be deployed at `https://api.example.com`, but application running at `https://app.client.com`.
+
+In order to allow that, special middleware function created, [/source/middleware/cors.js](/source/middleware/cors.js):
+
+```js
+function cors() {
+	return function (req, res, next) {
+		res.header('Access-Control-Allow-Origin', '*');
+		res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+		res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-Access-Token, X-Revision, Content-Type');
+
+		next();
+	};
+}
+
+module.exports = cors;
+```
+
+It have be added during application initialization, like:
+
+```js
+	app.use(middleware.cors());
+```js
+
 <a name="backbonejs"/>
 ## Backbone.js
 
