@@ -279,7 +279,7 @@ It have be added during application initialization, like:
 
 ```js
 	app.use(middleware.cors());
-```js
+```
 
 <a name="backbonejs"/>
 ## Backbone.js
