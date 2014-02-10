@@ -7,7 +7,7 @@
     "test": "node runMocha"
   },
   "dependencies": {
-    "express": "3.0.0rc4",
+    "express": "~3.4.8",
     "ejs": "*",
     "underscore": "~1.4.4",
     "moment": "~2.0.0",
