@@ -250,7 +250,7 @@ describe('/api/auth.js', function () {
 		describe('expired token', function () {
 			beforeEach(function () {
 				var key = '95810db3f765480999a8d5089b0815bd4b55e831';
-				var username = 'user', timespamp = moment().add('hours', 1).add('minutes', 2).valueOf();
+				var username = 'user', timespamp = moment().subtract('hours', 1).subtract('minutes', 2).valueOf();
 				var message = username + ';' + timespamp;
 				var hmac = crypto.createHmac('sha1', key).update(message).digest('hex');
 
