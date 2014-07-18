@@ -11,7 +11,7 @@
     "ejs": "*",
     "underscore": "~1.4.4",
     "moment": "~2.0.0",
-    "bcrypt-nodejs": "0.0.3",
+    "bcrypt-nodejs": "0.0.3"
   },
   "devDependencies": {
     "grunt-cli": "~0.1.8",
