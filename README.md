@@ -37,7 +37,6 @@ NOTE: It is still in **progress**. If you would like to contribute, please join 
 	* [Optimization results](#optimization-results)
 * [Deployment](#deployment)
 
-<a name="description"/>
 ## Description
 
 SPA infrastructure setup could be time consuming. It's a typical problem, to configure `requirejs`, initial routing and view manager, to prevent memory leaks. This project could be used as a good start to build your own single page application.
